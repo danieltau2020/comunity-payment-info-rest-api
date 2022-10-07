@@ -47,9 +47,9 @@ app.use("/api/employees", employeesRoutes)
 app.use("/api/cmca", cmcaRoutes)
 app.use("/api/minevillages", mineVillagesRoutes)
 
-// app.get("/test", (req, res) => {
-//   return res.send("SocioInfo public server is up and running...")
-// })
+app.get("/test", (req, res) => {
+  return res.send("SocioInfo public server is up and running...")
+})
 
 app.use(notFound)
 app.use(errorHandler)

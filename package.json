@@ -1,7 +1,7 @@
 {
-  "name": "apisocioinfopublic",
+  "name": "community-payments-info-rest-api",
   "version": "1.0.0",
-  "description": "Public socioinfo api",
+  "description": "communit & payments info rest api",
   "main": "server.js",
   "type": "module",
   "author": "Daniel Tau",

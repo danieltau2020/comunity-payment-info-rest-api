@@ -26,7 +26,7 @@ export const sendEmail = async (email, emailSubject, emailBody) => {
     })
 
     let mailOptions = {
-      from: "socioinfoapp@gmail.com",
+      from: "community.payment.infoapp@gmail.com",
       to: email,
       subject: emailSubject,
       html: emailBody

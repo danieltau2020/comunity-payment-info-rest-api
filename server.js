@@ -21,7 +21,9 @@ mongoose
   .then(() =>
     app.listen(process.env.PORT || 5000, () => {
       console.log("Db connection success")
-      console.log(`SocioInfo public API running on port ${process.env.PORT}`)
+      console.log(
+        `Community & payments info api running on port ${process.env.PORT}`
+      )
     })
   )
   .catch((err) => {
@@ -48,7 +50,7 @@ app.use("/api/cmca", cmcaRoutes)
 app.use("/api/minevillages", mineVillagesRoutes)
 
 app.get("/test", (req, res) => {
-  return res.send("SocioInfo public server is up and running...")
+  return res.send("Community & payments info server is up and running...")
 })
 
 app.use(notFound)

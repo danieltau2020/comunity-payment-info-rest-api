@@ -1,7 +1,7 @@
 {
   "name": "community-payments-info-rest-api",
   "version": "1.0.0",
-  "description": "communit & payments info rest api",
+  "description": "community & payments info rest api",
   "main": "server.js",
   "type": "module",
   "author": "Daniel Tau",

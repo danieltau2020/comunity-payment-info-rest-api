@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 mongoose
-  .connect(process.env.MONGO_ATLAS_URL)
+  .connect(process.env.MONGO_URL)
   .then(() =>
     app.listen(process.env.PORT || 5000, () => {
       console.log("Db connection success")

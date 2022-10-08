@@ -5,6 +5,6 @@ import { addEmployee } from "../controllers/employeesController.js"
 
 const router = express.Router()
 
-router.route("/addemployee").post(cleanBody, validateToken, addEmployee)
+router.route("/addemployee").post(cleanBody, addEmployee)
 
 export default router

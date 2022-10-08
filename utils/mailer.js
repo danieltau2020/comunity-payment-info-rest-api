@@ -2,17 +2,6 @@ import nodemailer from "nodemailer"
 
 export const sendEmail = async (email, emailSubject, emailBody) => {
   try {
-    const body_html = `<!DOCTYPE>
-        <html>
-            <body>
-                <p>Your activation code is: <b></b></p>
-                <p>Click on this <a href="https://community-payments-info.netlify.app/?a=activate-account" target="_blank">link</a> to activate your account.</p>
-                <p>The activation code will expire after 10 minutes.</p>
-                <p>Thank you.</p>
-            </body>
-        </html>
-        `
-
     let transporter = nodemailer.createTransport({
       service: "gmail",
       secure: false,
@@ -26,13 +15,13 @@ export const sendEmail = async (email, emailSubject, emailBody) => {
     })
 
     let mailOptions = {
-      from: "community.payment.infoapp@gmail.com",
+      from: process.env.EMAIL,
       to: email,
       subject: emailSubject,
       html: emailBody
     }
 
-    await transporter.sendMail(mailOptions, (err, data) => {
+    transporter.sendMail(mailOptions, (err, data) => {
       if (err) {
         console.log("Error occured", err)
       } else {

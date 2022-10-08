@@ -6,7 +6,7 @@ export const sendEmail = async (email, emailSubject, emailBody) => {
         <html>
             <body>
                 <p>Your activation code is: <b></b></p>
-                <p>Click on this <a href="http://localhost:3000/?a=activate-account" target="_blank">link</a> to activate your account.</p>
+                <p>Click on this <a href="https://community-payments-info.netlify.app/?a=activate-account" target="_blank">link</a> to activate your account.</p>
                 <p>The activation code will expire after 10 minutes.</p>
                 <p>Thank you.</p>
             </body>

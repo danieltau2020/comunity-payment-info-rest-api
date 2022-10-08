@@ -76,7 +76,7 @@ export const signUp = async (req, res) => {
     <html>
         <body>
             <p>Your activation code is: <b>${code}</b></p>
-            <p>Click on this <a href="http://localhost:3000/?id=activate" target="_blank">link</a> to activate your account.</p>
+            <p>Click on this <a href="https://community-payments-info.netlify.app/?id=activate" target="_blank">link</a> to activate your account.</p>
             <p>The activation code will expire after 10 minutes.</p>
             <p>Thank you</p>
             <p>Community & Payment Info App</p>
@@ -296,7 +296,7 @@ export const forgotPassword = async (req, res) => {
     <html>
         <body>
             <p>Your password reset code is: <b>${code}</b></p>
-            <p>Click on this <a href="http://localhost:3000/?id=reset" target="_blank">link</a> reset your password.</p>
+            <p>Click on this <a href="https://community-payments-info.netlify.app/?id=reset" target="_blank">link</a> reset your password.</p>
             <p>The reset link will expire after 10 minutes.</p>
             <p>Thank you</p>
             <p>Community & Payment Info App</p>

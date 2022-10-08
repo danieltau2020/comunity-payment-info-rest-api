@@ -10,7 +10,7 @@ const employeesSchema = Joi.object().keys({
     minDomainSegments: 2,
     tlds: { allow: ["com", "net"] }
   }),
-  position: Joi.string().max(20).required()
+  position: Joi.string().max(40).required()
 })
 
 // Add employee

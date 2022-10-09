@@ -69,18 +69,34 @@ export const signUp = async (req, res) => {
     result.value.password = hash
 
     let code = Math.floor(100000 + Math.random() * 900000) // Generate random 6 digit code
-    let expiry = Date.now() + 60 * 1000 * 10 // Set expiry 10 mins ahead of now
+    let expiry = Date.now() + 24 * 60 * 60 * 1000 // Set expiry 24 hours ahead of now
 
     const emailSubject = "User Account Activation"
     const emailBody = `<!DOCTYPE>
     <html>
         <body>
-            <p>Your activation code is: <b>${code}</b></p>
-            <p>Click on this <a href="${process.env.CLIENT_URL}/?id=activate" target="_blank">link</a> to activate your account.</p>
-            <p>The activation code will expire after 10 minutes.</p>
-            <p>Thank you</p>
-            <p>Community & Payment Info App</p>
-        </body>
+        <p style="font-family:Arial,sans-serif;">Your account activation code is: <b>${code}</b></p>
+        <p style="font-family:Arial,sans-serif;">Click on the button below to activate your account.</p>
+        <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="border-radius: 2px;" bgcolor="#ffbe07">
+                            <a href="${process.env.CLIENT_URL}/?id=activate" target="_blank" style="padding: 8px 12px; border: 1px solid #ffbe07; border-radius: 2px; font-family:Arial,sans-serif; font-size: 14px; color: #ffffff; text-decoration: none; font-weight:bold; display: inline-block;">
+                              Activate your account 
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+      </table>
+      <p style="font-family:Arial,sans-serif;">If you didn't sign up for an account with Community & Payment Info App, simply ignore this email</p>
+      <p style="font-family:Arial,sans-serif;">The account activation code will expire in 24 hours.</p>
+      <p style="font-family:Arial,sans-serif;">Thank you</p>
+      <p style="font-family:Arial,sans-serif;">Community & Payment Info App</p>
+    </body>
     </html>
     `
 
@@ -120,7 +136,7 @@ export const signUp = async (req, res) => {
     return res.status(200).json({
       success: true,
       message:
-        "Your registration is successful. Check your email to activate your account. The link will expire after 10 minutes."
+        "Your registration is successful. Check your email to activate your account. The link will expire after 24 hours."
       // referralCode: result.value.referralCode
     })
   } catch (error) {
@@ -295,18 +311,32 @@ export const forgotPassword = async (req, res) => {
     const emailBody = `<!DOCTYPE>
     <html>
         <body>
-            <p>Your password reset code is: <b>${code}</b></p>
-            <p>Click on this <a href="${process.env.CLIENT_URL}/?id=reset" target="_blank">link</a> reset your password.</p>
-            <p>The reset link will expire after 10 minutes.</p>
-            <p>Thank you</p>
-            <p>Community & Payment Info App</p>
-        </body>
+          <p style="font-family:Arial,sans-serif;">Your password reset code is: <b>${code}</b></p>
+          <p style="font-family:Arial,sans-serif;">Click on the button below to reset your password.</p>
+          <table width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+              <td>
+                  <table cellspacing="0" cellpadding="0">
+                      <tr>
+                          <td style="border-radius: 2px;" bgcolor="#ffbe07">
+                              <a href="${process.env.CLIENT_URL}/?id=reset" target="_blank" style="padding: 8px 12px; border: 1px solid #ffbe07; border-radius: 2px; font-family:Arial,sans-serif; font-size: 14px; color: #ffffff; text-decoration: none; font-weight:bold; display: inline-block;">
+                                Reset your password   
+                              </a>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+        </table>
+        <p style="font-family:Arial,sans-serif;">If you didn't request to change your password, simply ignore this email</p>
+        <p style="font-family:Arial,sans-serif;">The reset code will expire in 24 hours.</p>
+        <p style="font-family:Arial,sans-serif;">Thank you</p>
+        <p style="font-family:Arial,sans-serif;">Community & Payment Info App</p>
+      </body>
     </html>
     `
 
     let response = await sendEmail(user.email, emailSubject, emailBody)
-
-    console.log(user.email, response)
 
     if (response.error) {
       return res.status(500).json({
@@ -315,7 +345,7 @@ export const forgotPassword = async (req, res) => {
       })
     }
 
-    let expiry = Date.now() + 60 * 1000 * 10
+    let expiry = Date.now() + 24 * 60 * 60 * 1000
     user.resetPasswordToken = code
     user.resetPasswordExpires = expiry
 

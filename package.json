@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "build": "npm install",
     "client": "yarn --cwd ../client start",
     "dev": "concurrently -k \"yarn server\" \"yarn client\""
   },

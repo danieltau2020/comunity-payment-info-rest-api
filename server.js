@@ -8,6 +8,7 @@ import usersRoutes from "./routes/usersRoutes.js"
 import employeesRoutes from "./routes/employeesRoutes.js"
 import cmcaRoutes from "./routes/cmcaRoutes.js"
 import mineVillagesRoutes from "./routes/mineVillagesRoutes.js"
+import heduruClanRoutes from "./routes/heduruClanRoutes.js"
 
 const app = express()
 dotenv.config()
@@ -20,7 +21,7 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() =>
     app.listen(process.env.PORT || 5000, () => {
-      console.log("Db connection success")
+      console.log("Mongo db connection success")
       console.log(
         `Community & payment info api running on port ${process.env.PORT}`
       )
@@ -48,6 +49,7 @@ app.use("/api/users", usersRoutes)
 app.use("/api/employees", employeesRoutes)
 app.use("/api/cmca", cmcaRoutes)
 app.use("/api/minevillages", mineVillagesRoutes)
+app.use("/api/heduru", heduruClanRoutes)
 
 app.get("/test", (req, res) => {
   return res.send("Community & payment info server is up and running...")

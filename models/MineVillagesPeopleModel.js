@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const MineVilagesPeopleSchema = new mongoose.Schema(
+const MineVillagesPeopleSchema = new mongoose.Schema(
   {
     personId: { type: String },
     regionId: { type: Number },
@@ -19,15 +19,15 @@ const MineVilagesPeopleSchema = new mongoose.Schema(
   }
 )
 
-MineVilagesPeopleSchema.method("toJSON", function () {
+MineVillagesPeopleSchema.method("toJSON", function () {
   const { _v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
-const MineVilagesPeopleModel = mongoose.model(
-  "MineVilagesPeople",
-  MineVilagesPeopleSchema
+const MineVillagesPeopleModel = mongoose.model(
+  "MineVillagesPeople",
+  MineVillagesPeopleSchema
 )
 
-export default MineVilagesPeopleModel
+export default MineVillagesPeopleModel

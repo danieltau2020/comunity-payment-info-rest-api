@@ -177,8 +177,8 @@ export const findAllBankAccountsNext = async (req, res, next) => {
         }
       }
     }
-    //***  No account query
-    {
+    //  No account query
+    else {
       // No people query
       if (!req.peopleQuery && req.people.length > 0) {
         for (let item of req.people) {
@@ -242,7 +242,7 @@ export const findAllBankAccountsNext = async (req, res, next) => {
     }
   } catch (error) {
     console.error("Error-get-cmca-bankaccounts", error)
-    req.cmcaBankAccounts = []
+    req.people = []
     req.totalCount = 0
     next()
   }

@@ -11,7 +11,8 @@ import {
   createCmcaPaymentsCollection,
   createMineVillagesSmlPaymentsCollection,
   createMineVillagesLeasePaymentsCollection,
-  updateCmcaPaymentType
+  updateCmcaPaymentType,
+  updateHeduruClanBankAccountDetails
 } from "../db/dbControllers.js"
 
 const router = express.Router()
@@ -42,5 +43,6 @@ router
 router
   .route("/minevilageleasepayments")
   .post(createMineVillagesLeasePaymentsCollection)
+router.route("/heduruclanbankaccounts").put(updateHeduruClanBankAccountDetails)
 
 export default router

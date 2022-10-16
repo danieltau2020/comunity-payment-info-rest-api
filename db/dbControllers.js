@@ -10,6 +10,8 @@ import CmcaPaymentModel from "../models/CmcaPaymentModel.js"
 import MineVillagesPaymentModel from "../models/MineVillagesPaymentModel.js"
 import RegionModel from "../models/RegionModel.js"
 import VillageModel from "../models/VillageModel.js"
+import HeduruClanModel from "../models/HeduruClanModel.js"
+import HeduruClanBankAccountModel from "../models/HeduruClanBankAccountModel.js"
 
 const findVillage = async (villageName) => {
   try {
@@ -459,6 +461,36 @@ export const updateCmcaPaymentType = async (req, res) => {
     return res.status(500).json({
       error: true,
       message: "Error updating cmca payment type"
+    })
+  }
+}
+
+// @desc  Update heduru clan account details
+export const updateHeduruClanBankAccountDetails = async (req, res) => {
+  try {
+    const clans = await HeduruClanModel.find().lean()
+
+    for (let clan of clans) {
+      await HeduruClanBankAccountModel.findOneAndUpdate(
+        { clanId: clan.clanId },
+        {
+          $set: {
+            regionId: clan.regionId,
+            villageId: clan.villageId
+          }
+        }
+      )
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Heduru clan bank accounts updated successfully"
+    })
+  } catch (error) {
+    console.error("Error updating heduru clan bank account details", error)
+    return res.status(500).json({
+      error: true,
+      message: "Error updating heduru clan bank account details"
     })
   }
 }

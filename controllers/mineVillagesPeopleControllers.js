@@ -17,7 +17,7 @@ export const findAll = async (req, res) => {
       if (a.householdNo === b.householdNo) return 0
       if (a.relationship === "Head" && b.relationship !== "Head") return -1
       if (a.relationship !== "Head" && b.relationship === "Head") return 1
-      if (a.relationship === "Head" && b.relationship == "Head") return 0
+      if (a.relationship === "Head" && b.relationship === "Head") return 0
     })
 
     return res.status(200).json({

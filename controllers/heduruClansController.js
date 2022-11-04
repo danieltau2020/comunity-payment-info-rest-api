@@ -11,7 +11,7 @@ export const findAllHeduruClan = async (req, res) => {
       if (a.villageId === b.villageId) return 0
       if (a.clanName > b.clanName) return -1
       if (a.clanName < b.clanName) return 1
-      if ((a.clanName = b.clanName)) return 0
+      if (a.clanName === b.clanName) return 0
     })
 
     return res.status(200).json({
